@@ -1,2 +1,2 @@
 classDiagram
-PersonEntity
+  PersonEntity
