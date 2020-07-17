@@ -1,12 +1,10 @@
+## Diagrama de Classes
 
 ```mermaid
 classDiagram
   class PersonEntity
   class CepEntity
 ```
-
-
-## Diagrama de Classes
 
 ```mermaid!
 classDiagram
