@@ -52,6 +52,8 @@ sequenceDiagram
 	John-->>-Alice: I feel great!
 ```
 
+## Diagrama de Estado
+
 ```mermaid
 stateDiagram
 	[*] --> Still
@@ -63,6 +65,7 @@ stateDiagram
 	Crash --> [*]
 ```					
 
+## Fluxograma 
 
 ```mermaid
 graph TD
@@ -72,6 +75,8 @@ graph TD
   C -->|Two| E[iPhone]
   C -->|Three| F[fa:fa-car Car]
 ```		
+
+## Diagrama Entidade-Relacionamento
 
 ```mermaid
 erDiagram
