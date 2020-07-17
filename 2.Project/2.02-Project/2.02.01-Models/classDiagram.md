@@ -1,5 +1,11 @@
 ```mermaid
 classDiagram
+  class Duck
+```
+
+
+```mermaid
+classDiagram
   Animal <|-- Duck
   Animal <|-- Fish
   Animal <|-- Zebra
