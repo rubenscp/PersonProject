@@ -1,17 +1,11 @@
-<script src="mermaid.min.js"></script>
-<script>mermaid.initialize({startOnLoad:true});</script>
 
-
-
-
-
-```mermaid
+```mermaid!
 classDiagram
   class PersonEntity
   class CepEntity
 ```
 
-```mermaid
+```mermaid!
 classDiagram
   Animal <|-- Duck
   Animal <|-- Fish
