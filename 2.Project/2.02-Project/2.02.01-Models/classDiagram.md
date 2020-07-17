@@ -4,6 +4,7 @@ classDiagram
   class PersonEntity
   class CepEntity
 ```
+## Diagrama de Classes
 
 ```mermaid!
 classDiagram
@@ -29,6 +30,8 @@ classDiagram
   }
 ```
 
+## Fluxograma 
+
 ```mermaid
 graph TD;
     A-->B;
@@ -36,6 +39,8 @@ graph TD;
     B-->D;
     C-->D;
 ```
+
+## Diagrama de Sequencia 
 
 ```mermaid
 sequenceDiagram
