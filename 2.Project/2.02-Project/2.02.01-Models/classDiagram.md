@@ -1,10 +1,10 @@
 
 ```mermaid
 classDiagram
+  class PersonEntity
+  class CepEntity
 ```
 
-##  class PersonEntity
-##  class CepEntity
 
 ## Diagrama de Classes
 
@@ -88,4 +88,13 @@ erDiagram
         ORDER ||--|{ ORDER-ITEM : includes
         PRODUCT-CATEGORY ||--|{ PRODUCT : contains
         PRODUCT ||--o{ ORDER-ITEM : "ordered in"
+```
+
+## Pizza 
+
+```mermaid
+pie title Pets adopted by volunteers
+  "Dogs" : 100
+  "Cats" : 100
+  "Rats" : 100
 ```
