@@ -1,3 +1,5 @@
+% mermaid --version
+
 ```mermaid
 classDiagram  
 ```
