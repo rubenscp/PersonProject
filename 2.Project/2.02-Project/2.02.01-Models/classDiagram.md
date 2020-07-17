@@ -8,6 +8,12 @@ class CepEntity
 
 ```mermaid
 classDiagram
+Class03 *-- xxx
+```
+
+```mermaid
+classDiagram
+Class00
 Class01 <|-- AveryLongClass : Cool
 Class03 *-- Class04
 Class05 o-- Class06
