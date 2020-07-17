@@ -1,5 +1,5 @@
 
-```mermaid!
+```mermaid
 classDiagram
   class PersonEntity
   class CepEntity
@@ -29,7 +29,7 @@ classDiagram
   }
 ```
 
-```mermaid!
+```mermaid
 graph TD;
     A-->B;
     A-->C;
