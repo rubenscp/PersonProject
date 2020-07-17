@@ -23,6 +23,18 @@ sequenceDiagram
 ```
 
 ```mermaid
+stateDiagram
+	[*] --> Still
+	Still --> [*]
+
+	Still --> Moving
+	Moving --> Still
+	Moving --> Crash
+	Crash --> [*]
+```					
+
+
+```mermaid
 graph TD
   A[Christmas] -->|Get money| B(Go shopping)
   B --> C{Let me think}
