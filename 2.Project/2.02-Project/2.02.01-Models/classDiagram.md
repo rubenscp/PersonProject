@@ -1,9 +1,18 @@
-% mermaid --version
+
 
 ```mermaid
-classDiagram  
+classDiagram
+  class PersonEntity
+  class CepEntity
 ```
 
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
 
 ```mermaid
 classDiagram
