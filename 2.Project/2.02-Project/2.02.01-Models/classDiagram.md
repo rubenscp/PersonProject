@@ -1,13 +1,13 @@
 ## Diagrama de Classes
 
 ```mermaid
-classDiagram
+classDiagram 
 class PersonEntity
 class CepEntity
 ```
 
 ```mermaid
-classDiagram
+classDiagram 
 
 Class03 *-- xxx
 
