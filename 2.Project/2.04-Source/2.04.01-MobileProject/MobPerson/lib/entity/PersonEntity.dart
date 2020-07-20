@@ -20,16 +20,16 @@ class PersonEntity {
   CityEntity cityEntity;
   InstitutionAutonomousEnum institutionAutonomousEnum;
   String institutionName;
-  ActingAreaEntity actingArea;
-  InterestProductCultureEntity interestProductCulture;
-  InterestAreaEntity interestArea;
+  List<ActingAreaEntity> actingAreas;
+  List<InterestProductCultureEntity> interestProductsCultures;
+  List<InterestAreaEntity> interestAreas;
   String jobRole;
   double cpf;
   String mainAddress;
   String addressComplement;
   int cep;
   FarmSizeEnum farmSize;
-  SchoolingEntity schoolingEntity;
+  List<SchoolingEntity> schoolingEntity;
   VisitNumberEnum visitNumber;
   DateTime dateOfLastVisit;
   bool receiveInformationFromEmbrapa;
@@ -38,26 +38,26 @@ class PersonEntity {
   PersonEntity({
     @required this.id,
     @required this.fullName,
-    @required this.gender,
+    this.gender,
     @required this.email,
     @required this.personalPhone,
-    @required this.commercialPhone,
-    @required this.cityEntity,
-    @required this.institutionAutonomousEnum,
-    @required this.institutionName,
-    @required this.actingArea,
-    @required this.interestProductCulture,
-    @required this.interestArea,
-    @required this.jobRole,
-    @required this.cpf,
-    @required this.mainAddress,
-    @required this.addressComplement,
-    @required this.cep,
-    @required this.farmSize,
-    @required this.schoolingEntity,
-    @required this.visitNumber,
-    @required this.dateOfLastVisit,
-    @required this.receiveInformationFromEmbrapa,
-    @required this.comments,
+    this.commercialPhone,
+    this.cityEntity,
+    this.institutionAutonomousEnum,
+    this.institutionName,
+    this.actingAreas,
+    this.interestProductsCultures,
+    this.interestAreas,
+    this.jobRole,
+    this.cpf,
+    this.mainAddress,
+    this.addressComplement,
+    this.cep,
+    this.farmSize,
+    this.schoolingEntity,
+    this.visitNumber,
+    this.dateOfLastVisit,
+    this.receiveInformationFromEmbrapa,
+    this.comments,
   });
 }

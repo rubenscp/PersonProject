@@ -1,0 +1,34 @@
+Pessoais:
+	String id;
+	String fullName;
+	GenderEnum gender;
+	String email;
+	String personalPhone;
+	String commercialPhone;
+	CityEntity cityEntity;
+	
+Trabalho:
+	String jobRole;
+	InstitutionAutonomousEnum institutionAutonomousEnum;
+	String institutionName;
+	FarmSizeEnum farmSize;
+
+Interesses:
+	List<ActingAreaEntity> actingAreas;
+	List<InterestProductCultureEntity> interestProductsCultures;
+	List<InterestAreaEntity> interestAreas;
+
+Complemento:	
+	double cpf;
+	String mainAddress;
+	String addressComplement;
+	int cep;
+	List<SchoolingEntity> schoolingEntity;
+	
+Visita Empresa:
+	VisitNumberEnum visitNumber;
+	DateTime dateOfLastVisit;
+	bool receiveInformationFromEmbrapa;
+
+Comentários:
+	String comments;
