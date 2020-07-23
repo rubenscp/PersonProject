@@ -1,4 +1,5 @@
 import 'package:MobPerson/entity/PersonEntity.dart';
+import 'package:MobPerson/widget/TextFieldWidget.dart';
 import 'package:flutter/material.dart';
 
 class PersonViewTabPersonal extends StatelessWidget {
@@ -7,13 +8,27 @@ class PersonViewTabPersonal extends StatelessWidget {
     final PersonEntity personEntity =
         ModalRoute.of(context).settings.arguments as PersonEntity;
 
-    return Container(
+    return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          Text(
-            'Dados Pessoais ${personEntity.fullName}',
-            style: TextStyle(),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text(
+              'Dados Pessoais',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
           ),
+          TextFieldWidget('Id:', personEntity.id),
+          TextFieldWidget('Nome:', personEntity.fullName),
+          TextFieldWidget('Email:', personEntity.email),
+          TextFieldWidget('Sexo:', personEntity.genderFormatted()),
+          TextFieldWidget(
+              'Telefone pessoal:', personEntity.personalPhoneFormatted()),
+          TextFieldWidget(
+              'Telefone comercial:', personEntity.commercialPhoneFormatted()),
+          TextFieldWidget('Cidade:', personEntity.cityEntityFormatted()),
         ],
       ),
     );

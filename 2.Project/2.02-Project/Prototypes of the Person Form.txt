@@ -1,10 +1,10 @@
 Pessoais:
 	String id;
 	String fullName;
-	GenderEnum gender;
 	String email;
 	String personalPhone;
 	String commercialPhone;
+	GenderEnum gender;
 	CityEntity cityEntity;
 	
 Trabalho:

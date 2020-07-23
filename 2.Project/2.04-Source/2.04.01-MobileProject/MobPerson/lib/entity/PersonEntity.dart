@@ -1,3 +1,4 @@
+import 'package:MobPerson/entity/CommentEntity.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:MobPerson/entity/ActingAreaEntity.dart';
@@ -33,7 +34,7 @@ class PersonEntity {
   VisitNumberEnum visitNumber;
   DateTime dateOfLastVisit;
   bool receiveInformationFromEmbrapa;
-  String comments;
+  List<CommentEntity> commentsEntity;
 
   PersonEntity({
     @required this.id,
@@ -58,6 +59,87 @@ class PersonEntity {
     this.visitNumber,
     this.dateOfLastVisit,
     this.receiveInformationFromEmbrapa,
-    this.comments,
+    this.commentsEntity,
   });
+
+  String genderFormatted() {
+    switch (this.gender) {
+      case GenderEnum.MALE:
+        return 'Masculino';
+
+      case GenderEnum.FEMININE:
+        return 'Feminino';
+
+      default:
+        return '-';
+    }
+  }
+
+  String personalPhoneFormatted() {
+    return this.personalPhone != null ? this.personalPhone.toString() : "-";
+  }
+
+  String commercialPhoneFormatted() {
+    return this.commercialPhone != null ? this.commercialPhone.toString() : "-";
+  }
+
+  String cityEntityFormatted() {
+    return this.cityEntity != null ? this.cityEntity.name : "-";
+  }
+
+  String institutionAutonomousEnumFormatted() {
+    return this.institutionAutonomousEnum != null
+        ? this.institutionAutonomousEnum
+        : "-";
+  }
+
+  String institutionNameFormatted() {
+    return this.institutionName != null ? this.institutionName : "-";
+  }
+
+  // List<ActingAreaEntity> actingAreas;
+  // List<InterestProductCultureEntity> interestProductsCultures;
+  // List<InterestAreaEntity> interestAreas;
+
+  String jobRoleFormatted() {
+    return this.jobRole != null ? this.jobRole : "-";
+  }
+
+  String cpfFormatted() {
+    return this.cpf != null ? this.cpf.toString() : "-";
+  }
+
+  String mainAddressFormatted() {
+    return this.mainAddress != null ? this.mainAddress : "-";
+  }
+
+  String addressComplementFormatted() {
+    return this.addressComplement != null ? this.addressComplement : "-";
+  }
+
+  String cepFormatted() {
+    return this.cep != null ? this.cep.toString() : "-";
+  }
+
+  String farmSizeFormatted() {
+    return this.farmSize != null ? this.farmSize.toString() : "-";
+  }
+
+  // List<SchoolingEntity> schoolingEntity;
+
+  String visitNumberFormatted() {
+    return this.visitNumber != null ? this.visitNumber : "-";
+  }
+
+  String dateOfLastVisitFormatted() {
+    return this.dateOfLastVisit != null ? this.dateOfLastVisit : "-";
+  }
+
+  String receiveInformationFromEmbrapaFormatted() {
+    return this.receiveInformationFromEmbrapa != null
+        ? this.receiveInformationFromEmbrapa.toString()
+        : "-";
+  }
+
+  // List<CommentEntity> commentsEntity;
 }
