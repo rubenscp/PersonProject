@@ -7,12 +7,6 @@ class PersonsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final persons = PERSONS_DUMMY;
-    print('PersonsListView 1');
-    print(persons.toString());
-    print(persons.length);
-    print(persons[0].id);
-    print(persons[0].fullName);
-    print('PersonsListView 2');
 
     return Scaffold(
       appBar: AppBar(
