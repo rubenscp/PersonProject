@@ -20,7 +20,7 @@ class PersonViewTabPersonal extends StatelessWidget {
               ),
             ),
           ),
-          TextFieldWidget('Id:', personEntity.id),
+          TextFieldWidget('Id:', personEntity.id.toString()),
           TextFieldWidget('Nome:', personEntity.fullName),
           TextFieldWidget('Email:', personEntity.email),
           TextFieldWidget('Sexo:', personEntity.genderFormatted()),

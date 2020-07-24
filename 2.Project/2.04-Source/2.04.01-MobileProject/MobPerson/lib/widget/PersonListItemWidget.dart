@@ -9,6 +9,11 @@ class PersonListItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('PersonListItemWidget 1');
+    print(personEntity.toJson().toString());
+    print(personEntity.fullName);
+    print('PersonListItemWidget 2');
+
     return Card(
       elevation: 3,
       child: ListTile(

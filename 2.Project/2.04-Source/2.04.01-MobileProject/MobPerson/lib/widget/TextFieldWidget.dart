@@ -43,7 +43,7 @@ class TextFieldWidget extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: Colors.green[400],
                 ),
               ),
             ),

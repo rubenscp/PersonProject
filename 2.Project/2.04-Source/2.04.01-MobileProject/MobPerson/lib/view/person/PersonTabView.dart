@@ -14,7 +14,7 @@ class PersonTabView extends StatelessWidget {
       length: 6,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Pessoa'),
+          title: Text('Informações da Pessoa'),
           backgroundColor: Theme.of(context).primaryColor,
           actions: <Widget>[
             IconButton(
