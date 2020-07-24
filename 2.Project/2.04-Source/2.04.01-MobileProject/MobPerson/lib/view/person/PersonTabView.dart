@@ -1,11 +1,11 @@
+import 'package:MobPerson/view/person/PersonTabViewComplement.dart';
+import 'package:MobPerson/view/person/PersonTabViewEnterpriseVisit.dart';
+import 'package:MobPerson/view/person/PersonTabViewInterests.dart';
+import 'package:MobPerson/view/person/PersonTabViewPersonal.dart';
+import 'package:MobPerson/view/person/PersonTabViewWork.dart';
 import 'package:flutter/material.dart';
 
-import 'PersonViewTabComments.dart';
-import 'PersonViewTabComplement.dart';
-import 'PersonViewTabEnterpriseVisit.dart';
-import 'PersonViewTabInterests.dart';
-import 'PersonViewTabPersonal.dart';
-import 'PersonViewTabWork.dart';
+import 'PersonTabViewComments.dart';
 
 class PersonTabView extends StatelessWidget {
   @override
@@ -16,12 +16,6 @@ class PersonTabView extends StatelessWidget {
         appBar: AppBar(
           title: Text('Informações da Pessoa'),
           backgroundColor: Theme.of(context).primaryColor,
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.save),
-              onPressed: () => {},
-            ),
-          ],
           bottom: TabBar(
             tabs: [
               Tab(icon: Icon(Icons.person_outline)),
@@ -35,12 +29,12 @@ class PersonTabView extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            PersonViewTabPersonal(),
-            PersonViewTabWork(),
-            PersonViewTabInterests(),
-            PersonViewTabComplement(),
-            PersonViewTabEnterpriseVisit(),
-            PersonViewTabComments(),
+            PersonTabViewPersonal(),
+            PersonTabViewWork(),
+            PersonTabViewInterests(),
+            PersonTabViewComplement(),
+            PersonTabViewEnterpriseVisit(),
+            PersonTabViewComments(),
           ],
         ),
       ),

@@ -2,7 +2,7 @@ import 'package:MobPerson/entity/PersonEntity.dart';
 import 'package:MobPerson/widget/TextFieldWidget.dart';
 import 'package:flutter/material.dart';
 
-class PersonViewTabWork extends StatelessWidget {
+class PersonTabViewComplement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final PersonEntity personEntity =
@@ -14,17 +14,17 @@ class PersonViewTabWork extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(10),
             child: Text(
-              'Trabalho',
+              'Complemento',
               style: TextStyle(
                 fontSize: 18,
               ),
             ),
           ),
-          TextFieldWidget('Emprego:', personEntity.jobRoleFormatted()),
-          TextFieldWidget('Instituição ou Autônomo?', 'usar caixa de seleção'),
-          TextFieldWidget(
-              'Instituição:', personEntity.institutionNameFormatted()),
-          TextFieldWidget('farmSize', 'FarmSizeEnum'),
+          TextFieldWidget('CPF:', personEntity.cpfFormatted()),
+          TextFieldWidget('Endereço:', personEntity.mainAddressFormatted()),
+          TextFieldWidget('Complemento:', personEntity.addressComplementFormatted()),  
+          TextFieldWidget('CEP:', personEntity.cepFormatted()),
+          TextFieldWidget('Escolaridade:', '	List<SchoolingEntity>'),
         ],
       ),
     );

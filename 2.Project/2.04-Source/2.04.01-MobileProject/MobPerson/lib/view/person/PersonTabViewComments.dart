@@ -2,7 +2,7 @@ import 'package:MobPerson/entity/PersonEntity.dart';
 import 'package:MobPerson/widget/TextFieldWidget.dart';
 import 'package:flutter/material.dart';
 
-class PersonViewTabComplement extends StatelessWidget {
+class PersonTabViewComments extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final PersonEntity personEntity =
@@ -14,17 +14,13 @@ class PersonViewTabComplement extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(10),
             child: Text(
-              'Complemento',
+              'Comentários',
               style: TextStyle(
                 fontSize: 18,
               ),
             ),
           ),
-          TextFieldWidget('CPF:', personEntity.cpfFormatted()),
-          TextFieldWidget('Endereço:', personEntity.mainAddressFormatted()),
-          TextFieldWidget('Complemento:', personEntity.addressComplementFormatted()),  
-          TextFieldWidget('CEP:', personEntity.cepFormatted()),
-          TextFieldWidget('Escolaridade:', '	List<SchoolingEntity>'),
+          TextFieldWidget('Comentários:', 'List<CommentEntity>'),
         ],
       ),
     );

@@ -33,7 +33,7 @@ class PersonListItemWidget extends StatelessWidget {
                 color: Theme.of(context).primaryColor,
                 onPressed: () => {
                   Navigator.of(context).pushNamed(
-                    AppRoutes.PERSON_ACTION_VIEW,
+                    AppRoutes.PERSON_ACTION_NEW_EDIT,
                     arguments: personEntity,
                   )
                 },

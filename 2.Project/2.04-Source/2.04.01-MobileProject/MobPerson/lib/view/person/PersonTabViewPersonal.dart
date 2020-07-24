@@ -2,7 +2,7 @@ import 'package:MobPerson/entity/PersonEntity.dart';
 import 'package:MobPerson/widget/TextFieldWidget.dart';
 import 'package:flutter/material.dart';
 
-class PersonViewTabInterests extends StatelessWidget {
+class PersonTabViewPersonal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final PersonEntity personEntity =
@@ -14,16 +14,21 @@ class PersonViewTabInterests extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(10),
             child: Text(
-              'Interesses',
+              'Dados Pessoais',
               style: TextStyle(
                 fontSize: 18,
               ),
             ),
           ),
-          TextFieldWidget('Áreas de Atuação', 'List<ActingAreaEntity>'),
-          TextFieldWidget('Cuturas e Produtos de Interesse',
-              'List<InterestProductCultureEntity> '),
-          TextFieldWidget('Áreas de Interesse', 'List<InterestAreaEntity> '),
+          TextFieldWidget('Id:', personEntity.id.toString()),
+          TextFieldWidget('Nome:', personEntity.fullName),
+          TextFieldWidget('Email:', personEntity.email),
+          TextFieldWidget('Sexo:', personEntity.genderFormatted()),
+          TextFieldWidget(
+              'Telefone pessoal:', personEntity.personalPhoneFormatted()),
+          TextFieldWidget(
+              'Telefone comercial:', personEntity.commercialPhoneFormatted()),
+          TextFieldWidget('Cidade:', personEntity.cityEntityFormatted()),
         ],
       ),
     );

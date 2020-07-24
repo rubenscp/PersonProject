@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:MobPerson/util/appRoutes.dart';
 
-import 'view/person/PersonTabView.dart';
 import 'view/person/PersonsListView.dart';
+import 'view/person/PersonTabView.dart';
+import 'view/person/PersonTabNewEdit.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,8 +24,8 @@ class MyApp extends StatelessWidget {
       home: PersonsListView(),
       routes: {
         AppRoutes.PERSON_ACTION_LIST: (ctx) => PersonsListView(),
-        // AppRoutes.PERSON_ACTION_VIEW: (ctx) => PersonView(),
         AppRoutes.PERSON_ACTION_VIEW: (ctx) => PersonTabView(),
+        AppRoutes.PERSON_ACTION_NEW_EDIT: (ctx) => PersonTabNewEdit(),
       },
     );
   }
