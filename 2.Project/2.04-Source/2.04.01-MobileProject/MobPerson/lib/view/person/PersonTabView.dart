@@ -1,11 +1,11 @@
-import 'package:MobPerson/view/person/PersonTabViewComplement.dart';
-import 'package:MobPerson/view/person/PersonTabViewEnterpriseVisit.dart';
-import 'package:MobPerson/view/person/PersonTabViewInterests.dart';
-import 'package:MobPerson/view/person/PersonTabViewPersonal.dart';
-import 'package:MobPerson/view/person/PersonTabViewWork.dart';
 import 'package:flutter/material.dart';
 
 import 'PersonTabViewComments.dart';
+import 'PersonTabViewComplement.dart';
+import 'PersonTabViewEnterpriseVisit.dart';
+import 'PersonTabViewInterests.dart';
+import 'PersonTabViewPersonal.dart';
+import 'PersonTabViewWork.dart';
 
 class PersonTabView extends StatelessWidget {
   @override

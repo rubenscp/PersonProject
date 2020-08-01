@@ -1,3 +1,4 @@
+import 'package:MobPerson/dao/PersonDao.dart';
 import 'package:MobPerson/entity/PersonEntity.dart';
 import 'package:MobPerson/util/AppRoutes.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,39 @@ class PersonListItemWidget extends StatelessWidget {
                 icon: Icon(Icons.delete),
                 color: Theme.of(context).errorColor,
                 onPressed: () {
-                  showDialog(context: null);
+                  showDialog(
+                    context: context,
+                    builder: (ctx) => AlertDialog(
+                      title: Text('Remover Pessoa'),
+                      content: Text(
+                        'Confirma remoção de ${personEntity.fullName}?',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      actions: <Widget>[
+                        FlatButton(
+                          child: Text('Não'),
+                          onPressed: () => Navigator.of(context).pop(false),
+                        ),
+                        FlatButton(
+                          child: Text('Sim'),
+                          onPressed: () => Navigator.of(context).pop(true),
+                        ),
+                      ],
+                    ),
+                  ).then((value) async {
+                    if (value) {
+                      PersonDao().delete(personEntity.id);
+                      Scaffold.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Pessoa excluída com sucesso!',
+                            textAlign: TextAlign.center,
+                          ),
+                          duration: Duration(seconds: 5),
+                        ),
+                      );
+                    }
+                  });
                 },
               ),
             ],

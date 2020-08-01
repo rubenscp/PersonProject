@@ -24,7 +24,7 @@ class PersonTabViewEnterpriseVisit extends StatelessWidget {
           TextFieldWidget('Data da última visita:',
               personEntity.dateOfLastVisitFormatted()),
           TextFieldWidget('Recebe informações da Empresa? ',
-              personEntity.receiveInformationFromEmbrapaFormatted()),
+              personEntity.receiveInformationFormatted()),
         ],
       ),
     );

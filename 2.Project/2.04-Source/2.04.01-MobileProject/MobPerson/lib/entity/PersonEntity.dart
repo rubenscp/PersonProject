@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:MobPerson/entity/CommentEntity.dart';
 import 'package:flutter/foundation.dart';
 
@@ -12,6 +10,7 @@ import 'package:MobPerson/enumerate/VisitNumberEnum.dart';
 import 'package:MobPerson/entity/CityEntity.dart';
 import 'package:MobPerson/enumerate/GenderEnum.dart';
 import 'package:MobPerson/enumerate/InstitutionAutonomousEnum.dart';
+import 'package:intl/intl.dart';
 
 // ======================================================================================
 // Use the website json to dart to convert: https://javiercbk.github.io/json_to_dart/
@@ -22,8 +21,8 @@ class PersonEntity {
   String fullName;
   GenderEnum gender;
   String email;
-  String personalPhone;
-  String commercialPhone;
+  int personalPhone;
+  int commercialPhone;
   CityEntity cityEntity;
   InstitutionAutonomousEnum institutionAutonomousEnum;
   String institutionName;
@@ -39,16 +38,19 @@ class PersonEntity {
   List<SchoolingEntity> schoolingsEntity;
   VisitNumberEnum visitNumberEnum;
   DateTime dateOfLastVisit;
-  bool receiveInformationFromEmbrapa;
+  bool receiveInformation;
   List<CommentEntity> commentsEntity;
 
-  // Constructor
+  // ************
+  // Constructors
+  // ************
+
   PersonEntity({
-    @required id,
-    @required fullName,
+    id,
+    fullName,
     gender,
-    @required email,
-    @required personalPhone,
+    email,
+    personalPhone,
     commercialPhone,
     cityEntity,
     institutionAutonomousEnum,
@@ -65,7 +67,7 @@ class PersonEntity {
     schoolingsEntity,
     visitNumberEnum,
     dateOfLastVisit,
-    receiveInformationFromEmbrapa,
+    receiveInformation,
     commentsEntity,
   }) {
     this.id = id;
@@ -74,7 +76,23 @@ class PersonEntity {
     this.email = email;
     this.personalPhone = personalPhone;
     this.commercialPhone = commercialPhone;
-    // this.cityEntity = cityEntity;
+    this.cityEntity = cityEntity;
+    this.institutionAutonomousEnum = institutionAutonomousEnum;
+    this.institutionName = institutionName;
+    this.actingAreas = actingAreas;
+    this.interestProductsCultures = interestProductsCultures;
+    this.interestProductsCultures = interestAreas;
+    this.jobRole = jobRole;
+    this.cpf = cpf;
+    this.mainAddress = mainAddress;
+    this.addressComplement = addressComplement;
+    this.cep = cep;
+    this.farmSizeEnum = farmSizeEnum;
+    this.schoolingsEntity = schoolingsEntity;
+    this.visitNumberEnum = visitNumberEnum;
+    this.dateOfLastVisit = dateOfLastVisit;
+    this.receiveInformation = receiveInformation;
+    this.commentsEntity = commentsEntity;
   }
 
   // PersonEntity(
@@ -103,7 +121,9 @@ class PersonEntity {
   //   List<CommentEntity> commentsEntity,
   // );
 
+  // *************************
   // Getter and setter methods
+  // *************************
 
   // int get id {
   //   return id;
@@ -190,29 +210,67 @@ class PersonEntity {
   }
 
   String dateOfLastVisitFormatted() {
-    return this.dateOfLastVisit != null ? this.dateOfLastVisit : "-";
+    return this.dateOfLastVisit == null
+        ? '-'
+        : DateFormat('dd/MM/yyyy hh:mm')
+            .format(this.dateOfLastVisit)
+            .toString();
   }
 
-  String receiveInformationFromEmbrapaFormatted() {
-    return this.receiveInformationFromEmbrapa != null
-        ? this.receiveInformationFromEmbrapa.toString()
+  String receiveInformationFormatted() {
+    return this.receiveInformation != null
+        ? this.receiveInformation.toString()
         : "-";
   }
 
   // List<CommentEntity> commentsEntity;
 
-  PersonEntity.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        fullName = json['fullName'],
-        email = json['email'],
-        personalPhone = json['personalPhone'],
-        commercialPhone = json['commercialPhone'];
+  // *************************
+  // Others methods
+  // *************************
 
-  Map<String, dynamic> toJson() => {
+  // PersonEntity.fromJson(Map<String, dynamic> json)
+  //     : id = json['id'],
+  //       fullName = json['fullName'],
+  //       email = json['email'],
+  //       personalPhone = json['personalPhone'],
+  //       commercialPhone = json['commercialPhone'];
+
+  // Map<String, dynamic> toJson() => {
+  //       'id': id,
+  //       'fullName': fullName,
+  //       'email': email,
+  //       'personalPhone': personalPhone,
+  //       'commercialPhone': commercialPhone,
+  //     };
+
+  PersonEntity.fromJsonSqflite(Map<String, dynamic> json)
+      : id = json['id'],
+        fullName = json['full_name'],
+        gender = json['gender'],
+        email = json['email'],
+        personalPhone = json['personal_phone'],
+        commercialPhone = json['commercial_phone'],
+        institutionName = json['institution_name'],
+        jobRole = json['job_role'],
+        cpf = json['cpf'],
+        mainAddress = json['main_address'],
+        addressComplement = json['address_complement'],
+        cep = json['cep'],
+        dateOfLastVisit = DateTime.parse(json['date_of_last_visit']);
+
+  Map<String, dynamic> toJsonSqflite() => {
         'id': id,
-        'fullName': fullName,
+        'full_name': fullName,
         'email': email,
-        'personalPhone': personalPhone,
-        'commercialPhone': commercialPhone,
+        'personal_phone': personalPhone,
+        'commercial_phone': commercialPhone,
+        'institution_name': institutionName,
+        'job_role': jobRole,
+        'cpf': cpf,
+        'main_address': mainAddress,
+        'address_complement': addressComplement,
+        'cep': cep,
+        'date_of_last_visit': dateOfLastVisit.toIso8601String(),
       };
 }

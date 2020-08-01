@@ -1,3 +1,4 @@
+import 'package:MobPerson/view/SplashView.dart';
 import 'package:flutter/material.dart';
 
 import 'package:MobPerson/util/appRoutes.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.deepOrange,
         fontFamily: 'Lato',
       ),
-      home: PersonsListView(),
+      home: SplashView(),
       routes: {
         AppRoutes.PERSON_ACTION_LIST: (ctx) => PersonsListView(),
         AppRoutes.PERSON_ACTION_VIEW: (ctx) => PersonTabView(),
