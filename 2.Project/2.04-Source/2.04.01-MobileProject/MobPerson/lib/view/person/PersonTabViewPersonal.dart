@@ -17,6 +17,7 @@ class PersonTabViewPersonal extends StatelessWidget {
               'Dados Pessoais',
               style: TextStyle(
                 fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),

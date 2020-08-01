@@ -17,6 +17,7 @@ class PersonTabViewComments extends StatelessWidget {
               'Comentários',
               style: TextStyle(
                 fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),

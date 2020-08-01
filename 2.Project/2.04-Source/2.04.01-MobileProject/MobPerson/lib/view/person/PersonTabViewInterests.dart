@@ -17,6 +17,7 @@ class PersonTabViewInterests extends StatelessWidget {
               'Interesses',
               style: TextStyle(
                 fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),

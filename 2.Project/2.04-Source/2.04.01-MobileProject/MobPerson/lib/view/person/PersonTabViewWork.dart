@@ -17,6 +17,7 @@ class PersonTabViewWork extends StatelessWidget {
               'Trabalho',
               style: TextStyle(
                 fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),

@@ -35,7 +35,7 @@ class DatabaseHelper {
       onUpgrade: _onUpgrade,
     );
 
-    // for (int i = 1; i <= 20; i++) {
+    // for (int i = 1; i <= 30; i++) {
     //   await this._addPersons(db, i);
     // }
 

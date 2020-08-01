@@ -17,12 +17,14 @@ class PersonTabViewComplement extends StatelessWidget {
               'Complemento',
               style: TextStyle(
                 fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
           TextFieldWidget('CPF:', personEntity.cpfFormatted()),
           TextFieldWidget('Endereço:', personEntity.mainAddressFormatted()),
-          TextFieldWidget('Complemento:', personEntity.addressComplementFormatted()),  
+          TextFieldWidget(
+              'Complemento:', personEntity.addressComplementFormatted()),
           TextFieldWidget('CEP:', personEntity.cepFormatted()),
           TextFieldWidget('Escolaridade:', '	List<SchoolingEntity>'),
         ],

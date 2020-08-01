@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
+
 import 'package:MobPerson/dao/PersonDao.dart';
 import 'package:MobPerson/entity/PersonEntity.dart';
 import 'package:MobPerson/util/AppRoutes.dart';
+
 import 'package:MobPerson/widget/AppDrawer.dart';
 import 'package:MobPerson/widget/PersonListItemWidget.dart';
-import 'package:flutter/material.dart';
 
-class PersonsListView extends StatelessWidget {
+class PersonsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final persons = PERSONS_DUMMY;
@@ -31,10 +33,25 @@ class PersonsListView extends StatelessWidget {
         future: personsFuture,
         builder: (ctx, snapshot) {
           List<PersonEntity> persons = snapshot.data ?? [];
-          return ListView.builder(
-            itemCount: persons.length,
-            itemBuilder: (ctx, i) => PersonListItemWidget(persons[i]),
-          );
+          return persons.isEmpty
+              ? Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Center(
+                    heightFactor: 1,
+                    child: Text(
+                      'Nao existem pessoas cadastradas.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.orange,
+                      ),
+                    ),
+                  ),
+                )
+              : ListView.builder(
+                  itemCount: persons.length,
+                  itemBuilder: (ctx, i) => PersonListItemWidget(persons[i]),
+                );
           //
         },
       ),

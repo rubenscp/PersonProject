@@ -48,7 +48,7 @@ class PersonListItemWidget extends StatelessWidget {
                     builder: (ctx) => AlertDialog(
                       title: Text('Remover Pessoa'),
                       content: Text(
-                        'Confirma remoção de ${personEntity.fullName}?',
+                        'Confirma a remoção de ${personEntity.fullName}?',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       actions: <Widget>[
@@ -64,14 +64,14 @@ class PersonListItemWidget extends StatelessWidget {
                     ),
                   ).then((value) async {
                     if (value) {
-                      PersonDao().delete(personEntity.id);
+                      await PersonDao().delete(personEntity.id);
                       Scaffold.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
-                            'Pessoa excluída com sucesso!',
+                            'Pessoa removida com sucesso!',
                             textAlign: TextAlign.center,
                           ),
-                          duration: Duration(seconds: 5),
+                          duration: Duration(seconds: 4),
                         ),
                       );
                     }

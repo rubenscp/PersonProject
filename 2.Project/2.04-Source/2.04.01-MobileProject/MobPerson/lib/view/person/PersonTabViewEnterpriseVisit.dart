@@ -17,6 +17,7 @@ class PersonTabViewEnterpriseVisit extends StatelessWidget {
               'Visitas',
               style: TextStyle(
                 fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
