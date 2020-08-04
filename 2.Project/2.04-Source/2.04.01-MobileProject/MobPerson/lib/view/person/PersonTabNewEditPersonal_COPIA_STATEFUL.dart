@@ -1,17 +1,28 @@
+import 'package:MobPerson/dao/PersonDao.dart';
+import 'package:MobPerson/entity/PersonEntity.dart';
 import 'package:flutter/material.dart';
 
-class PersonTabNewEditPersonal extends StatelessWidget {
+class PersonTabNewEditPersonal_COPIA_STATEFUL extends StatefulWidget {
+  Map<String, Object> _formData = Map<String, Object>();
+
+  PersonTabNewEditPersonal_COPIA_STATEFUL(this._formData);
+
+  @override
+  _PersonTabNewEditPersonalState createState() =>
+      _PersonTabNewEditPersonalState(this._formData);
+}
+
+class _PersonTabNewEditPersonalState extends State<PersonTabNewEditPersonal_COPIA_STATEFUL> {
+  final personDao = new PersonDao();
+
   final _form = GlobalKey<FormState>();
   Map<String, Object> _formData = Map<String, Object>();
-  Future<void> Function(Map<String, Object>) savePerson;
-
-  // final personDao = new PersonDao();
 
   final _emailFocusNode = FocusNode();
   final _personalPhoneFocusNode = FocusNode();
   final _commercialPhoneFocusNode = FocusNode();
 
-  PersonTabNewEditPersonal(this._formData, this.savePerson);
+  _PersonTabNewEditPersonalState(this._formData);
 
   Future<void> _saveForm() async {
     // call each "onSaved" method of the form controls
@@ -23,41 +34,40 @@ class PersonTabNewEditPersonal extends StatelessWidget {
     // print(this._form.currentState.;;
 
     print('save form 2');
-    this.savePerson(this._formData);
-    print('save form 3');
 
     // creating object to save
-    // final personEntity = PersonEntity(
-    //   id: this._formData['id'],
-    //   fullName: this._formData['fullName'],
-    //   email: this._formData['email'],
-    //   personalPhone: int.parse(this._formData['personalPhone']),
-    //   commercialPhone: int.parse(this._formData['commercialPhone']),
-    //   institutionName: '',
-    //   jobRole: '',
-    //   cpf: 0.toDouble(),
-    //   mainAddress: '',
-    //   addressComplement: '',
-    //   cep: 0,
-    //   dateOfLastVisit: DateTime.now(),
-    // );
+    final personEntity = PersonEntity(
+      id: this._formData['id'],
+      fullName: this._formData['fullName'],
+      email: this._formData['email'],
+      personalPhone: int.parse(this._formData['personalPhone']),
+      commercialPhone: int.parse(this._formData['commercialPhone']),
+      institutionName: 'Empresa X',
+      jobRole: 'Analista de Sistemas e Professor',
+      cpf: 37047485104.toDouble(),
+      mainAddress: 'Rua 122, nr 126, Setor Sul',
+      addressComplement: 'Qd.F43A, Lt. 47',
+      cep: 74085500,
+      dateOfLastVisit: DateTime.now(),
+    );
 
-    // print('save form 3');
-    // print(personEntity.toJsonSqflite());
-    // print('save form 4');
+    print('save form 3');
+    print(personEntity.toJsonSqflite());
+    print('save form 4');
 
-    // try {
-    //   // final personDao = PersonDao();
-    //   print('save form 5.1');
-    //   final id = await personDao.save(personEntity);
-    //   print('save form 5.2');
-    //   print('id $id');
-    // } catch (e) {
-    //   print('save form - gerou exceção ');
-    //   print(e.toString());
-    // }
+    try {
+      // final personDao = PersonDao();
+      print('save form 5.1');
+      final id = await personDao.save(personEntity);
+      print('save form 5.2');
+      // print('id $id');
 
-    // print('save form 6');
+    } catch (e) {
+      print('save form - gerou exceção ');
+      print(e.toString());
+    }
+
+    print('save form 6');
   }
 
   @override

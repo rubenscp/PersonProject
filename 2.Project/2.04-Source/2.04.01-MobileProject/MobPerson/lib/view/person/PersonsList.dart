@@ -8,12 +8,17 @@ import 'package:MobPerson/widget/AppDrawer.dart';
 import 'package:MobPerson/widget/PersonListItemWidget.dart';
 
 class PersonsList extends StatelessWidget {
+  Future<List<PersonEntity>> _loadPersonsFuture() async {
+    return await PersonDao().findAll();
+  }
+
+  Future<void> _refreshPersonsFuture(BuildContext context) {
+    this._loadPersonsFuture();
+    return Future.value();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // final persons = PERSONS_DUMMY;
-    // final persons = null;
-    Future<List<PersonEntity>> personsFuture = PersonDao().findAll();
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Pessoas'),
@@ -30,29 +35,52 @@ class PersonsList extends StatelessWidget {
       ),
       drawer: AppDrawer(),
       body: FutureBuilder<List<PersonEntity>>(
-        future: personsFuture,
+        future: this._loadPersonsFuture(),
         builder: (ctx, snapshot) {
-          List<PersonEntity> persons = snapshot.data ?? [];
-          return persons.isEmpty
-              ? Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: Center(
-                    heightFactor: 1,
-                    child: Text(
-                      'Nao existem pessoas cadastradas.',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.orange,
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+              return Text('Pressione algo');
+
+            case ConnectionState.active:
+            case ConnectionState.waiting:
+              return Text('Aguarde ...');
+              break;
+
+            case ConnectionState.done:
+              if (snapshot.hasError) {
+                return Text('Erro: ${snapshot.error}');
+              }
+              List<PersonEntity> persons = snapshot.data ?? [];
+              return RefreshIndicator(
+                onRefresh: () => this._refreshPersonsFuture(context),
+                child: persons.isEmpty
+                    ? Padding(
+                        padding: const EdgeInsets.all(18.0),
+                        child: Center(
+                          heightFactor: 1,
+                          child: Text(
+                            'Nao existem pessoas cadastradas.',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.orange,
+                            ),
+                          ),
+                        ),
+                      )
+                    : ListView.builder(
+                        itemCount: persons.length,
+                        itemBuilder: (ctx, i) => PersonListItemWidget(
+                          persons[i],
+                          this._refreshPersonsFuture,
+                        ),
                       ),
-                    ),
-                  ),
-                )
-              : ListView.builder(
-                  itemCount: persons.length,
-                  itemBuilder: (ctx, i) => PersonListItemWidget(persons[i]),
-                );
-          //
+              );
+              break;
+
+            default:
+              return null;
+          }
         },
       ),
     );

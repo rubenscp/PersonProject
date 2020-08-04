@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 class PersonListItemWidget extends StatelessWidget {
   final PersonEntity personEntity;
 
-  PersonListItemWidget(this.personEntity);
+  final Future<void> Function(BuildContext context) refreshPersonsFuture;
+
+  PersonListItemWidget(this.personEntity, this.refreshPersonsFuture);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,8 @@ class PersonListItemWidget extends StatelessWidget {
               ),
               IconButton(
                 icon: Icon(Icons.delete),
-                color: Theme.of(context).errorColor,
+                // color: Theme.of(context).errorColor,
+                color: Colors.red[200],
                 onPressed: () {
                   showDialog(
                     context: context,
@@ -65,7 +68,10 @@ class PersonListItemWidget extends StatelessWidget {
                   ).then((value) async {
                     if (value) {
                       await PersonDao().delete(personEntity.id);
-                      Scaffold.of(context).showSnackBar(
+
+                      // this.refreshPersonsFuture(context);
+
+                      await Scaffold.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
                             'Pessoa removida com sucesso!',
@@ -74,6 +80,9 @@ class PersonListItemWidget extends StatelessWidget {
                           duration: Duration(seconds: 4),
                         ),
                       );
+
+                      Navigator.of(context)
+                          .pushReplacementNamed(AppRoutes.PERSON_ACTION_LIST);
                     }
                   });
                 },

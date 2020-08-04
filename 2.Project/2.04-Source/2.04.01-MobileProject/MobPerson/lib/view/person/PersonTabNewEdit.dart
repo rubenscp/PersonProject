@@ -1,3 +1,4 @@
+import 'package:MobPerson/dao/PersonDao.dart';
 import 'package:flutter/material.dart';
 import 'package:MobPerson/entity/PersonEntity.dart';
 import 'package:MobPerson/view/person/PersonTabNewEditPersonal.dart';
@@ -8,36 +9,70 @@ class PersonTabNewEdit extends StatefulWidget {
 }
 
 class _PersonTabNewEditState extends State<PersonTabNewEdit> {
-  final formData = Map<String, Object>();
+  final _formData = Map<String, Object>();
+
+  final personDao = new PersonDao();
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    if (formData.isEmpty) {
+    if (_formData.isEmpty) {
       final personEntity =
           ModalRoute.of(context).settings.arguments as PersonEntity;
       if (personEntity != null) {
-        formData['id'] = personEntity.id;
-        formData['fullname'] = personEntity.fullName;
-        formData['email'] = personEntity.email;
-        formData['personalPhone'] = personEntity.personalPhone;
-        formData['commercialPhone'] = personEntity.commercialPhone;
+        _formData['id'] = personEntity.id;
+        _formData['fullName'] = personEntity.fullName;
+        _formData['email'] = personEntity.email;
+        _formData['personalPhone'] = personEntity.personalPhone;
+        _formData['commercialPhone'] = personEntity.commercialPhone;
       } else {
-        formData['id'] = 0;
-        formData['fullname'] = '';
-        formData['email'] = '';
-        formData['personalPhone'] = 0;
-        formData['commercialPhone'] = 0;
+        _formData['id'] = null;
+        _formData['fullName'] = '';
+        _formData['email'] = '';
+        _formData['personalPhone'] = 0;
+        _formData['commercialPhone'] = 0;
       }
     }
   }
 
-  // Future<void> _saveForm() async {
-  //   print('save form 1');
-  //   print(this.formData);
-  //   // await PersonDao().save(_personEntity);
-  // }
+  Future<void> savePerson(Map<String, Object> formAllData) async {
+    print('savePerson  1');
+    print(formAllData);
+    print('savePerson 2');
+
+    final personEntity = PersonEntity(
+      id: this._formData['id'],
+      fullName: this._formData['fullName'],
+      email: this._formData['email'],
+      personalPhone: int.parse(this._formData['personalPhone']),
+      commercialPhone: int.parse(this._formData['commercialPhone']),
+      institutionName: '',
+      jobRole: '',
+      cpf: 0.toDouble(),
+      mainAddress: '',
+      addressComplement: '',
+      cep: 0,
+      dateOfLastVisit: DateTime.now(),
+    );
+
+    print('savePerson 3');
+    print(personEntity.toJsonSqflite());
+    print('savePerson 4');
+
+    try {
+      // final personDao = PersonDao();
+      print('savePerson 5');
+      final id = await personDao.save(personEntity);
+      print('savePerson 6');
+      print('savePerson id $id');
+    } catch (e) {
+      print('savePerson - gerou exceção ');
+      print(e.toString());
+    }
+
+    print('savePerson 7');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +107,7 @@ class _PersonTabNewEditState extends State<PersonTabNewEdit> {
         ),
         body: TabBarView(
           children: [
-            PersonTabNewEditPersonal(this.formData),
+            PersonTabNewEditPersonal(this._formData, this.savePerson),
             Tab(icon: Icon(Icons.work)),
             Tab(icon: Icon(Icons.nature)),
             Tab(icon: Icon(Icons.add_box)),

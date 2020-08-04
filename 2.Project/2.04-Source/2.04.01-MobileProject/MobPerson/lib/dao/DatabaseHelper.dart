@@ -35,11 +35,15 @@ class DatabaseHelper {
       onUpgrade: _onUpgrade,
     );
 
-    // for (int i = 1; i <= 30; i++) {
+    // for (int i = 1; i <= 10; i++) {
     //   await this._addPersons(db, i);
     // }
 
-    // print(await this._findAll(db));
+    print(await this._findAll(db));
+
+    print('classe DatabaseHelper - instancia db - 1');
+    print(db.toString());
+    print('classe DatabaseHelper - instancia db - 2');
 
     return db;
   }

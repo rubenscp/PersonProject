@@ -45,7 +45,7 @@ class PersonsListView_COPIA extends StatelessWidget {
                         ),
                       ),
                     )
-                  : PersonListItemWidget(persons[i]),
+                  : PersonListItemWidget(persons[i], null),
             ],
           ),
         ),

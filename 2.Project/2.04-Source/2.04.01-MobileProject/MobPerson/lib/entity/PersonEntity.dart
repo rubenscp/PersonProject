@@ -95,6 +95,13 @@ class PersonEntity {
     this.commentsEntity = commentsEntity;
   }
 
+
+  PersonEntity.newPerson({
+    this.fullName,
+    this.email,
+    this.personalPhone,
+    this.commercialPhone,
+  });
   // PersonEntity(
   //   @required int id,
   //   @required String fullName,
@@ -257,7 +264,8 @@ class PersonEntity {
         mainAddress = json['main_address'],
         addressComplement = json['address_complement'],
         cep = json['cep'],
-        dateOfLastVisit = DateTime.parse(json['date_of_last_visit']);
+        dateOfLastVisit = DateTime.now();
+  // dateOfLastVisit = DateTime.parse(json['date_of_last_visit'],
 
   Map<String, dynamic> toJsonSqflite() => {
         'id': id,
@@ -271,6 +279,8 @@ class PersonEntity {
         'main_address': mainAddress,
         'address_complement': addressComplement,
         'cep': cep,
-        'date_of_last_visit': dateOfLastVisit.toIso8601String(),
+        'date_of_last_visit':
+            dateOfLastVisit != null ? dateOfLastVisit.toIso8601String() : '',
       };
+  // 'date_of_last_visit': DateTime.now(),
 }

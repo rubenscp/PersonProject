@@ -33,10 +33,10 @@ class _SplashViewState extends State<SplashView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                'MobPerson',
+                'mobPerson',
                 style: TextStyle(
                   fontSize: 35,
-                  color: Colors.yellow,
+                  color: Colors.white70,
                 ),
               ),
               SizedBox(
@@ -46,7 +46,7 @@ class _SplashViewState extends State<SplashView> {
                 'versão 1.0.0',
                 style: TextStyle(
                   fontSize: 17,
-                  color: Colors.yellow,
+                  color: Colors.white70,
                 ),
               ),
               SizedBox(
